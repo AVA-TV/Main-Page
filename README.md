@@ -33,7 +33,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 110px 15px 20px 15px; /* پدینگ بالا برای جلوگیری از رفتن محتوا زیر سرچ‌بار فیکس شده */
+            padding: 110px 15px 20px 15px; /* فضا برای سرچ بار فیکس شده */
             position: relative;
             overflow-x: hidden;
         }
@@ -54,7 +54,7 @@
             100% { transform: translateY(-50%); }
         }
 
-        /* --- بخش سرچ بار کاملا فیکس و شناور در بالای صفحه --- */
+        /* --- بخش سرچ بار شناور ثابت در بالای صفحه --- */
         .search-universe {
             position: fixed;
             top: 15px;
@@ -162,7 +162,7 @@
             color: #fff;
         }
 
-        /* --- ساختار طرح‌بندی اصلی سایت (پشتیبانی از سایدبار تبلیغ دسکتاپ) --- */
+        /* --- ساختار چیدمان اصلی سایت (ستون فیلم‌ها + سایدبار لپ‌تاپ) --- */
         .main-layout-wrapper {
             width: 100%;
             max-width: 1450px;
@@ -178,7 +178,7 @@
             justify-items: center;
         }
 
-        /* چوکات یا بلوک کلی نگه‌دارنده هر فیلم و تبلیغ زیر آن */
+        /* بلوک کلی هر فیلم */
         .movie-block-wrapper {
             width: 100%;
             max-width: 340px;
@@ -270,36 +270,28 @@
             cursor: pointer;
         }
 
-        /* بخش چوکات زیرین تبلیغات بنری بر اساس ابعاد دستگاه */
+        /* بخش تزریق تبلیغات بنری زیر هر فیلم - بدون هیچ چوکات یا حاشیه اضافی */
         .card-banner-placement {
             margin-top: 15px;
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 50px;
         }
 
+        /* سایدبار ثابت لپ‌تاپ در سمت راست */
         .desktop-sidebar-ad {
             display: none;
         }
 
-        /* تبلت: ۲ کادر در یک خط */
+        /* حالت تبلت: ۲ کادر فیلم در یک خط */
         @media (min-width: 680px) and (max-width: 991px) {
             .movies-container {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .card-banner-placement .banner-mobile { display: none !important; }
-            .card-banner-placement .banner-tablet { display: block !important; }
         }
 
-        /* موبایل مینی */
-        @media (max-width: 679px) {
-            .card-banner-placement .banner-mobile { display: block !important; }
-            .card-banner-placement .banner-tablet { display: none !important; }
-        }
-
-        /* دسکتاپ و مانیتور بزرگ (۳ فیلم در خط + ستون سمت راست تبلیغات) */
+        /* حالت مانیتور بزرگ و لپ‌تاپ (۳ کادر فیلم در خط + سایدبار تبلیغاتی مستقل سمت راست) */
         @media (min-width: 992px) {
             .main-layout-wrapper {
                 display: grid;
@@ -309,32 +301,19 @@
             .movies-container {
                 grid-template-columns: repeat(3, 1fr);
             }
-            /* پنهان کردن تبلیغات زیر کادر فیلم در دسکتاپ */
+            /* پنهان سازی تبلیغات بنری زیر فیلم ها فقط در مانیتور بزرگ */
             .card-banner-placement {
                 display: none !important;
             }
-            /* نمایش سایدبار پیشرفته نئونی سمت راست */
+            /* سایدبار تبلیغاتی معلق و بدون قاب اضافه سمت راست روی دسکتاپ/لپتاپ */
             .desktop-sidebar-ad {
                 display: block;
                 width: 100%;
-                background: rgba(10, 15, 30, 0.8);
-                border: 1px solid rgba(0, 240, 255, 0.15);
-                border-radius: 24px;
-                padding: 10px;
                 height: fit-content;
                 position: sticky;
                 top: 110px;
-                box-shadow: 0 20px 45px rgba(0,0,0,0.5);
-                backdrop-filter: blur(10px);
                 text-align: center;
-            }
-            .sidebar-ad-title {
-                font-size: 0.8rem;
-                color: rgba(0, 240, 255, 0.7);
-                margin-bottom: 10px;
-                text-transform: uppercase;
-                letter-spacing: 1px;
-                font-weight: bold;
+                z-index: 900;
             }
         }
 
@@ -354,22 +333,21 @@
             box-shadow: 0 22px 50px rgba(255, 107, 0, 0.65);
         }
 
-        /* --- استایل فوق پیشرفته پاپ‌آپ تمام صفحه لوکس با فاصله ظریف --- */
+        /* --- استایل پنجره پاپ‌آپ تمام صفحه لوکس با فاصله ظریف از چهار لبه --- */
         .gateway-overlay {
             position: fixed;
-            top: 15px; left: 15px; right: 15px; bottom: 15px;
-            background: rgba(5, 8, 18, 0.85);
+            top: 20px; left: 20px; right: 20px; bottom: 20px;
+            background: rgba(4, 7, 16, 0.92);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             border: 2px solid rgba(255, 107, 0, 0.25);
             border-radius: 28px;
             z-index: 10000;
             display: none;
-            overflow: hidden; /* غیر قابل اسکرول کردن */
-            box-shadow: 0 0 60px rgba(0,0,0,0.9), inset 0 0 40px rgba(112, 0, 255, 0.15);
+            overflow: hidden; /* کاملا غیرقابل اسکرول */
+            box-shadow: 0 0 60px rgba(0,0,0,0.9);
         }
 
-        /* ساختار داخلی پاپ‌آپ چند لایه هماهنگ با دیوایس‌ها */
         .gateway-content-container {
             width: 100%;
             height: 100%;
@@ -377,7 +355,7 @@
             flex-direction: column;
         }
 
-        /* بخش مرکزی محتوا و لودینگ */
+        /* بخش مرکزی محتوای پاپ‌آپ */
         .gateway-center-zone {
             flex: 1;
             display: flex;
@@ -388,9 +366,9 @@
             padding: 20px;
         }
 
-        /* انیمیشن زنده شمارنده تایمر */
+        /* تایمر انیمیشنی معکوس */
         .gateway-timer-display {
-            font-size: 5rem;
+            font-size: 5.5rem;
             font-weight: 900;
             background: var(--anime-gradient);
             background-size: 200% auto;
@@ -398,65 +376,61 @@
             -webkit-text-fill-color: transparent;
             animation: moveGrad 3s linear infinite, timerScale 1s infinite ease-in-out;
             line-height: 1;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         @keyframes timerScale {
             0% { transform: scale(1); opacity: 0.9; }
-            50% { transform: scale(1.1); opacity: 1; filter: drop-shadow(0 0 15px rgba(255,0,85,0.6)); }
+            50% { transform: scale(1.08); opacity: 1; filter: drop-shadow(0 0 15px rgba(255,0,85,0.5)); }
             100% { transform: scale(1); opacity: 0.9; }
         }
 
         .gateway-cyber-brand {
-            font-size: 1.6rem;
+            font-size: 1.7rem;
             font-weight: 800;
             color: #ffffff;
             letter-spacing: 2px;
             text-shadow: 0 0 10px var(--neon-blue);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .gateway-status-text {
-            font-size: 1rem;
+            font-size: 1.05rem;
             color: #a0aec0;
-            max-width: 400px;
-            line-height: 1.5;
+            max-width: 450px;
+            line-height: 1.6;
             font-weight: 500;
         }
 
-        /* بخش قرارگیری تبلیغات داخل پاپ‌آپ */
+        /* هولدر تبلیغاتی بدون چوکات داخل پاپ‌آپ */
         .gateway-ad-holder {
             display: flex;
             justify-content: center;
             align-items: center;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 15px;
+            padding: 10px;
         }
 
-        /* چیدمان‌های اختصاصی پاپ‌آپ بر اساس نوع دستگاه */
+        /* چیدمان منعطف پاپ‌آپ بر اساس نوع دستگاه کاربر */
         @media (max-width: 991px) {
-            /* در تبلت و موبایل تبلیغ به سمت راست میچسبد */
+            /* تبلت و موبایل: تبلیغ نیتیو بدون قاب به سمت راست می‌چسبد */
             .gateway-content-container {
                 flex-direction: row-reverse;
             }
             .gateway-ad-holder {
-                width: 340px;
+                width: 325px;
                 height: 100%;
-                border-left: 1px solid rgba(255,255,255,0.05);
             }
         }
 
         @media (min-width: 992px) {
-            /* در دسکتاپ تبلیغ به پایین پاپ‌آپ منتقل شده و محتوا در وسط قرار میگیرد */
+            /* دسکتاپ و لپ‌تاپ: متون در وسط، تبلیغ بدون قاب در پایین پاپ‌آپ فیکس می‌شود */
             .gateway-content-container {
                 flex-direction: column;
             }
             .gateway-ad-holder {
                 width: 100%;
-                height: auto;
-                border-top: 1px solid rgba(255,255,255,0.05);
-                padding: 20px 10px;
                 margin-top: auto;
+                padding-bottom: 25px;
             }
         }
     </style>
@@ -488,20 +462,7 @@
                     </div>
                     <button onclick="triggerDownloadGateway('https://t.me/AVA_Movies_Animes/9')" class="premium-download-btn">DOWNLOAD NOW</button>
                 </div>
-                <div class="card-banner-placement">
-                    <div class="banner-mobile">
-                        <script>
-                            atOptions = { 'key' : '9e5c12a031e3b2a16c1d328d29e5dab4', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
-                        </script>
-                        <script src="https://www.highperformanceformat.com/9e5c12a031e3b2a16c1d328d29e5dab4/invoke.js"></script>
-                    </div>
-                    <div class="banner-tablet">
-                        <script>
-                            atOptions = { 'key' : '404c52513666d7584d5c00fe4d5ad86c', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
-                        </script>
-                        <script src="https://www.highperformanceformat.com/404c52513666d7584d5c00fe4d5ad86c/invoke.js"></script>
-                    </div>
-                </div>
+                <div class="card-banner-placement mobile-tablet-banner-target"></div>
             </div>
 
             <div class="movie-block-wrapper">
@@ -517,30 +478,14 @@
                     </div>
                     <button onclick="triggerDownloadGateway('https://t.me/AVA_Movies_Animes/14')" class="premium-download-btn">DOWNLOAD NOW</button>
                 </div>
-                <div class="card-banner-placement">
-                    <div class="banner-mobile">
-                        <script>
-                            atOptions = { 'key' : '9e5c12a031e3b2a16c1d328d29e5dab4', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
-                        </script>
-                        <script src="https://www.highperformanceformat.com/9e5c12a031e3b2a16c1d328d29e5dab4/invoke.js"></script>
-                    </div>
-                    <div class="banner-tablet">
-                        <script>
-                            atOptions = { 'key' : '404c52513666d7584d5c00fe4d5ad86c', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
-                        </script>
-                        <script src="https://www.highperformanceformat.com/404c52513666d7584d5c00fe4d5ad86c/invoke.js"></script>
-                    </div>
-                </div>
+                <div class="card-banner-placement mobile-tablet-banner-target"></div>
             </div>
 
         </div>
 
-        <div class="desktop-sidebar-ad">
-            <div class="sidebar-ad-title">Sponsored Advertisement</div>
-            <div id="sidebar-native-container">
-                <script async="async" data-cfasync="false" src="https://pl29741961.effectivecpmnetwork.com/46fa53bab184d6979bf4dbeee413d25f/invoke.js"></script>
-                <div id="container-46fa53bab184d6979bf4dbeee413d25f"></div>
-            </div>
+        <div class="desktop-sidebar-ad" id="desktop-sidebar-container">
+            <script async="async" data-cfasync="false" src="https://pl29741961.effectivecpmnetwork.com/46fa53bab184d6979bf4dbeee413d25f/invoke.js"></script>
+            <div id="container-46fa53bab184d6979bf4dbeee413d25f"></div>
         </div>
 
     </div>
@@ -554,18 +499,16 @@
                 <p class="gateway-status-text">You will be redirected to the secure movie download page after the countdown completes.</p>
             </div>
 
-            <div class="gateway-ad-holder">
-                <div style="width:100%; max-width:320px; min-height:50px;">
-                    <script async="async" data-cfasync="false" src="https://pl29741961.effectivecpmnetwork.com/46fa53bab184d6979bf4dbeee413d25f/invoke.js"></script>
-                    <div id="container-popup-46fa53bab184d6979bf4dbeee413d25f"></div>
-                </div>
+            <div class="gateway-ad-holder" id="popup-ad-container">
+                <script async="async" data-cfasync="false" src="https://pl29741961.effectivecpmnetwork.com/46fa53bab184d6979bf4dbeee413d25f/invoke.js"></script>
+                <div id="container-46fa53bab184d6979bf4dbeee413d25f"></div>
             </div>
 
         </div>
     </div>
 
     <script>
-        // دیتابیس فیلم‌ها برای سیستم سرچ بار شیک
+        // دیتابیس فیلم‌ها برای سیستم جستجو
         const moviesDatabase = [
             {
                 id: "movie-The-Marked-Woman", 
@@ -632,7 +575,7 @@
             }
         });
 
-        // --- مکانیزم فوق حرفه‌ای کنترل پاپ‌آپ و تایمر بدون تکرار کد ---
+        // --- مکانیزم یکپارچه کنترل پاپ‌آپ و تایمر بدون تکرار کد برای دکمه‌ها ---
         function triggerDownloadGateway(destinationUrl) {
             const modal = document.getElementById('downloadGatewayModal');
             const timerDisplay = document.getElementById('gatewayCountdownTimer');
@@ -641,6 +584,18 @@
             timerDisplay.innerText = timeLeft;
             modal.style.display = 'block';
 
+            // بازخوانی مجدد اسکریپت پاپ آپ جهت اطمینان از بالا آمدن حتمی تبلیغ نیتیو در هر بار کلیک
+            const popContainer = document.getElementById('popup-ad-container');
+            popContainer.innerHTML = '';
+            const scriptNode = document.createElement('script');
+            scriptNode.async = true;
+            scriptNode.setAttribute('data-cfasync', 'false');
+            scriptNode.src = 'https://pl29741961.effectivecpmnetwork.com/46fa53bab184d6979bf4dbeee413d25f/invoke.js';
+            const divNode = document.createElement('div');
+            divNode.id = 'container-46fa53bab184d6979bf4dbeee413d25f';
+            popContainer.appendChild(scriptNode);
+            popContainer.appendChild(divNode);
+
             const countdownInterval = setInterval(() => {
                 timeLeft--;
                 timerDisplay.innerText = timeLeft;
@@ -648,16 +603,43 @@
                 if (timeLeft <= 0) {
                     clearInterval(countdownInterval);
                     modal.style.display = 'none';
-                    window.location.href = destinationUrl; // انتقال اتوماتیک به لینک تلگرام/دانلود
+                    window.location.href = destinationUrl; // انتقال به لینک دانلود تلگرام
                 }
             }, 1000);
         }
 
-        // --- سیستم بارگذاری مجدد و هوشمند تبلیغات سایدبار دسکتاپ هر ۵۰ ثانیه ---
+        // --- سیستم رندر هوشمند و بدون لایه اضافی تبلیغات بنری زیر کادر فیلم‌ها بر اساس نوع دیوایس ---
+        function renderResponsiveCardBanners() {
+            const targets = document.querySelectorAll('.mobile-tablet-banner-target');
+            const width = window.innerWidth;
+
+            targets.forEach(target => {
+                target.innerHTML = ''; // ریست کانتینر برای جلوگیری از تکرار چوکات
+
+                if (width < 680) {
+                    // موبایل: بارگذاری مستقیم بنر کوچک ۳۲۰ در ۵۰ خالص
+                    window.atOptions = { 'key' : '9e5c12a031e3b2a16c1d328d29e5dab4', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
+                    const s = document.createElement('script');
+                    s.src = 'https://www.highperformanceformat.com/9e5c12a031e3b2a16c1d328d29e5dab4/invoke.js';
+                    target.appendChild(s);
+                } else if (width >= 680 && width < 992) {
+                    // تبلت: بارگذاری مستقیم بنر بزرگتر ۴۶۸ در ۶۰ خالص
+                    window.atOptions = { 'key' : '404c52513666d7584d5c00fe4d5ad86c', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+                    const s = document.createElement('script');
+                    s.src = 'https://www.highperformanceformat.com/404c52513666d7584d5c00fe4d5ad86c/invoke.js';
+                    target.appendChild(s);
+                }
+            });
+        }
+
+        // اجرای سیستم رندر تبلیغات بنری به محض بالا آمدن دامنه سایت
+        window.addEventListener('DOMContentLoaded', renderResponsiveCardBanners);
+
+        // --- سیستم بارگذاری مجدد و رفرش اتوماتیک تبلیغ سایدبار دسکتاپ هر ۵۰ ثانیه ---
         setInterval(() => {
-            const sidebarContainer = document.getElementById('sidebar-native-container');
-            if (sidebarContainer && window.innerWidth >= 992) {
-                sidebarContainer.innerHTML = ''; 
+            const sidebar = document.getElementById('desktop-sidebar-container');
+            if (sidebar && window.innerWidth >= 992) {
+                sidebar.innerHTML = ''; 
                 
                 const adScript = document.createElement('script');
                 adScript.async = true;
@@ -667,10 +649,10 @@
                 const adDiv = document.createElement('div');
                 adDiv.id = 'container-46fa53bab184d6979bf4dbeee413d25f';
                 
-                sidebarContainer.appendChild(adScript);
-                sidebarContainer.appendChild(adDiv);
+                sidebar.appendChild(adScript);
+                sidebar.appendChild(adDiv);
             }
-        }, 50000); // دقیقاً هر ۵0 ثانیه یکبار کل تبلیغ رفرش ریفرش و بازخوانی می‌شود.
+        }, 50000); // دقیقاً هر ۵۰ ثانیه رفرش کامل تبلیغ نیتیو جهت به حداکثر رساندن سود اکانت شما
     </script>
 </body>
 </html>
