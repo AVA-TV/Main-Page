@@ -314,8 +314,8 @@
 
     <div class="movies-container">
 
-        <div class="movie-premium-card" id="movie-the-aviator">
-            <img src="https://images.justwatch.com/poster/344584556/s718/the-marked-woman.jpg" alt="The Aviator Poster" class="movie-poster">
+        <div class="movie-premium-card" id="movie-The-Marked-Woman">
+            <img src="https://images.justwatch.com/poster/344584556/s718/the-marked-woman.jpg" alt="The Marked Woman Poster" class="movie-poster">
             
             <div class="movie-details-box">
                 <h2 class="movie-title-header">🎬 The Marked Woman</h2>
@@ -327,11 +327,9 @@
                 </div>
                 <div class="meta-info-line">
                     <span class="meta-label">🎭 Genre:</span> Thriller, Mystery, Crime
-
                 </div>
                 <div class="meta-info-line">
                     <span class="meta-label">🌍 Country:</span> Spain
-
                 </div>
                 <div class="meta-info-line">
                     <span class="meta-label">⏱ Runtime:</span> 109 min
@@ -339,40 +337,46 @@
             </div>
             <a href="https://t.me/AVA_Movies_Animes/9" class="premium-download-btn">DOWNLOAD NOW</a>
         </div>
+
+        <div class="movie-premium-card" id="Equilibrium">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzVWU77H_SgJSuhupxH1-c7pHcKN_cmjVXyBdn_2TjO4oc8SL8-T86nVo&s=10" alt="Equilibrium Poster" class="movie-poster">
+            
+            <div class="movie-details-box">
+                <h2 class="movie-title-header">🎬 Equilibrium</h2>
+                <div class="meta-info-line">
+                    <span class="meta-label">📅 Year:</span> 2002
+                </div>
+                <div class="meta-info-line">
+                    <span class="meta-label">⭐ IMDb:</span> 7.3/10
+                </div>
+                <div class="meta-info-line">
+                    <span class="meta-label">🎭 Genre:</span> Action, Sci-Fi, Thriller
+                </div>
+                <div class="meta-info-line">
+                    <span class="meta-label">🌍 Country:</span> United States
+                </div>
+                <div class="meta-info-line">
+                    <span class="meta-label">⏱ Runtime:</span> 107 min
+                </div>
+            </div>
+            <a href="https://t.me/AVA_Movies_Animes/14" class="premium-download-btn">DOWNLOAD NOW</a>
         </div>
 
-
-
-
-
-
-
-
-
-
-
+    </div>
 
     <script>
         // دیتابیس فیلم‌ها برای سیستم سرچ بار
         const moviesDatabase = [
-     
             {
                 id: "movie-The-Marked-Woman", 
-                title: "The Marked Woma", 
+                title: "The Marked Woman", 
                 thumb: "https://images.justwatch.com/poster/344584556/s718/the-marked-woman.jpg" 
             },
-
-
-
-
-
-
-
-
-
-
-
-
+            {
+                id: "Equilibrium", 
+                title: "Equilibrium", 
+                thumb: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzVWU77H_SgJSuhupxH1-c7pHcKN_cmjVXyBdn_2TjO4oc8SL8-T86nVo&s=10" 
+            }
 
             // 🟢 [جاخالی دیتابیس سرچ]: برای اضافه کردن فیلم‌های بعدی به سرچ، قالب زیر را کپی کن و با علامت کاما جدا کن:
             /*
